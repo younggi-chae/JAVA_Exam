@@ -1,0 +1,33 @@
+<script>
+    function person(name){
+       this.name = name;
+    }                              //함수를 정의하면 함수만 생성되는 것이 아니라 Prototype Object도 생성된다.
+    person.prototype.name = null;  //Prototype Object는 기본적인 속성으로 constructor와 _proto_를 가지고 있다.
+    person.prototype.introduce = function(){
+        return 'My name is ' + this.name;
+    }
+
+    function Programmer(name){
+        this.name = name;
+    }
+    Programmer.prototype = new person(); // person 함수를 통해 생성, person.prototype을 참조할 수 있다.
+    Programmer.prototype.coding = function(){ //prototype을 통해 속성을 추가, 삭제할 수 있다.
+        return 'Hello World';     //_proto_속성은 모든 객체가 가지고 있는 속성, 이 속성을 통해 상위 프로토타입과 연결 
+    }                             //이러한 형태를 프로토타입 체인이라고 한다.                   
+
+    function Designer(name){
+        this.name = name;
+    }
+    Designer.prototype = new person(); // person 함수를 통해 생성, person.prototype을 참조할 수 있다.
+    Designer.prototype.design = function(){ //prototype을 통해 속성을 추가, 삭제할 수 있다.
+        return 'wonderful!!'
+    }
+    var p1 = new Programmer('YoungGi');
+    var p2 = new Designer('EunYoung');
+    document.write(p1.introduce() + "<br />"); //Programmer가 person의 기능을 상속
+    document.write(p2.introduce() + "<br />");
+    document.write(p1.coding() + "<br />");
+    document.write(p2.design() + "<br />");
+    
+
+</script>
