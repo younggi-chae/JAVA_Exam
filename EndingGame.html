@@ -1,0 +1,13 @@
+<script>
+    var word = '김밥'; //첫 단어 선언. 초기화
+      while(true){
+        var answer = prompt(word); //반복문 조건
+        if(word[word.length -1] === answer[0]){ //length-1로 마지막글자 index번호 추출
+        alert('딩동댕!!');
+         word=answer; //word=answer로 answer이 새로운 word가 된다.
+        }
+         else{
+            alert('땡!!')
+        }
+    }
+</script>
