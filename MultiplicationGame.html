@@ -1,0 +1,17 @@
+<script>
+  while(true){   // 답이 맞을 경우, 문제를 반복적으로 출제
+    var number1 = Math.ceil(Math.random()*9); //1~9까지의 숫자 출력
+    var number2 = Math.ceil(Math.random()*9); //1~9까지의 숫자 출력
+    var result = number1 * number2;
+    var condition = true; 
+    while(condition){ //답이 틀릴 경우 무한반복
+     var answer = prompt(String(number1) + '곱하기' + String(number2) + '는?') //화면출력 내용, 문자열 결합
+      if(result === Number(answer)){
+          alert('딩동댕!');
+          condition = false; //아래 반복문을 빠져나와 위 반복문으로 이동
+      } else {
+          alert('땡!');
+      }
+    }    //1.컴퓨터가 랜덤한 문제를 낸다 -> 2.내가 답은 입력한다 -> 3.답이 맞는가? 
+  }      // no면 2번 단계로, yes면 1번 단계로 이동. 계속해서 반복
+</script>
