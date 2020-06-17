@@ -11,9 +11,9 @@ import mvc.board.BoardService;
 @Service("boardService")
 public class BoardServiceImpl implements BoardService {
 
-	@Autowired   
-	private BoardDAOSpring boardDAO; 
- 
+	@Autowired
+	private BoardDAO boardDAO;
+
 	public void insertBoard(BoardDTO dto) {
 		boardDAO.insertBoard(dto);
 	}
