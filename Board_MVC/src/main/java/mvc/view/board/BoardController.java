@@ -1,6 +1,8 @@
 package mvc.view.board;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,12 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import mvc.board.BoardDTO;
 import mvc.board.BoardService;
-import mvc.board.impl.BoardDAO;
+
 
 @Controller
 @SessionAttributes("board")
@@ -25,10 +28,13 @@ public class BoardController {
 	
 	// 글등록
 	@RequestMapping("/insertBoard.do")
-	public String insertBoard(BoardDTO dto) {
-
-		System.out.println("글 등록 처리");
-
+	public String insertBoard(BoardDTO dto) throws IOException {
+		
+		MultipartFile uploadFile = dto.getUploadFile();
+		if(!uploadFile.isEmpty()) {
+			String fileName = uploadFile.getOriginalFilename();
+			uploadFile.transferTo(new File("C:/" + fileName));
+		}
 		boardService.insertBoard(dto);
 		return "getBoardList.do";
 	}
