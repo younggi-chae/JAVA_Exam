@@ -22,8 +22,8 @@ public class BoardDAOSpring {
 	private final String BOARD_UPDATE = "update board set title=?, content=? where seq=?";
 	private final String BOARD_DELETE = "delete from board where seq=?";
 	private final String BOARD_GET    = "select * from board where seq=?";
-	private final String BOARD_LIST_T = "select * from board where title like '%'||?||'%' order by seq desc";
-	private final String BOARD_LIST_C = "select * from board where content like '%'||?||'%' order by seq desc";
+	private final String BOARD_LIST_T = "select * from board where title like concat('%',?,'%') order by seq desc";
+	private final String BOARD_LIST_C = "select * from board where content like concat('%',?,'%') order by seq desc";
 	 
 	//±Ûµî·Ï
 	public void insertBoard(BoardDTO dto) {
