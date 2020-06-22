@@ -27,32 +27,32 @@ public class BoardDAOSpring {
 	 
 	//글등록
 	public void insertBoard(BoardDTO dto) {
-		System.out.println("===> JDBC로 insertBoard() 기능 처리");
+		System.out.println("===> Spring JDBC로 insertBoard() 기능 처리");
 		jdbcTemplate.update(BOARD_INSERT, dto.getTitle(), dto.getWriter(), dto.getContent());
 	}
 	
 	//글수정
 	public void updateBoard(BoardDTO dto) {
-		System.out.println("===> JDBC로 updateBoard() 기능 처리");
+		System.out.println("===> Spring JDBC로 updateBoard() 기능 처리");
 		jdbcTemplate.update(BOARD_UPDATE, dto.getTitle(), dto.getContent(), dto.getSeq());
 	}
 	
 	//글삭제
 	public void deleteBoard(BoardDTO dto) {
-		System.out.println("===> JDBC로 deleteBoard() 기능 처리");
+		System.out.println("===> Spring JDBC로 deleteBoard() 기능 처리");
 		jdbcTemplate.update(BOARD_DELETE, dto.getSeq());
 	}
 	
 	//글상세 조회
 	public BoardDTO getBoard(BoardDTO dto) {
-		System.out.println("===> JDBC로 getBoard() 기능 처리");
+		System.out.println("===> Spring JDBC로 getBoard() 기능 처리");
 		Object[] args = {dto.getSeq()};	
 		return jdbcTemplate.queryForObject(BOARD_GET, args, new BoardRowMapper());
 	}
 	
 	//글 목록 조회
 	public List<BoardDTO> getBoardList(BoardDTO dto) {
-		System.out.println("===> JDBC로 getBoardList() 기능 처리");
+		System.out.println("===> Spring JDBC로 getBoardList() 기능 처리");
 		Object[] args = {dto.getSearchKeyword()};
 		if(dto.getSearchCondition().equals("TITLE")) {
 			return jdbcTemplate.query(BOARD_LIST_T, args, new BoardRowMapper());
