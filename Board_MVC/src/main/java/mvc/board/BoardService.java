@@ -18,5 +18,7 @@ public interface BoardService {
 
 	//글 목록 조회
 	List<BoardDTO> getBoardList(BoardDTO dto);
+	//글 조회수 
+	void updateCnt(BoardDTO dto);
 
 }
