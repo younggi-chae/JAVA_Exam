@@ -42,7 +42,6 @@ public class BoardController {
 	// 글수정
 	@RequestMapping("/updateBoard.do")
 	public String updateBoard(@ModelAttribute("board") BoardDTO dto) {
-		
 		boardService.updateBoard(dto);
 		return "getBoardList.do";
 	}
@@ -61,7 +60,7 @@ public class BoardController {
 	public String getBoard(BoardDTO dto, Model model) {
 
 		System.out.println("글 상세 조회 처리");
-		
+		boardService.updateCnt(dto);
 		model.addAttribute("board", boardService.getBoard(dto));
 		return "getBoard.jsp";
 		
