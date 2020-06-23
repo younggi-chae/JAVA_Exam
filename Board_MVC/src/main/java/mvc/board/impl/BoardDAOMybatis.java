@@ -38,4 +38,8 @@ public class BoardDAOMybatis {
 		System.out.println("===> Mybatis로 getBoardList() 기능 처리");
 		return mybatis.selectList("BoardDAO.getBoardList", dto);
 	}
+	
+	public void updateCnt(BoardDTO dto) {
+		mybatis.update("BoardDAO.updateCnt", dto);				
+	}
 }
