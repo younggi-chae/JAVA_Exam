@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import mvc.board.BoardDTO;
 import mvc.board.BoardService;
@@ -32,5 +34,10 @@ public class BoardServiceImpl implements BoardService {
 
 	public List<BoardDTO> getBoardList(BoardDTO dto) {
 		return boardDAO.getBoardList(dto);
+	}
+	
+	@Transactional(isolation = Isolation.READ_COMMITTED)
+	public void updateCnt(BoardDTO dto) {
+		boardDAO.updateCnt(dto);	
 	}
 }
