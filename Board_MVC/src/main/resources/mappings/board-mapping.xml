@@ -10,7 +10,7 @@
 		<result property="writer" column="WRITER" />
 		<result property="content" column="CONTENT"/>
 		<result property="regDate" column="REGDATE"/>
-		<result property="cnt" column="CNT"/>
+		<result property="cnt" column="CNT"/>			
 	</resultMap>	
 			
 	<insert id="insertBoard">
@@ -45,10 +45,34 @@
 	</update>
 
 	<select id="getBoardList" resultType="board">
-		SELECT * FROM BOARD WHERE 1 = 1
-		<if test="searchCondition == 'TITLE'"> AND TITLE LIKE CONCAT('%',#{searchKeyword},'%')</if>
-		<if test="searchCondition == 'CONTENT'"> AND CONTENT LIKE CONCAT('%',#{searchKeyword},'%')</if>
-		ORDER BY SEQ DESC
+		SELECT * FROM BOARD
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="searchType=='TITLE' and keyword != null and keyword != '' ">
+				AND TITLE like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='CONTENT' and keyword != null and keyword != '' ">
+				AND CONTENT like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='WRITER' and keyword != null and keyword != '' ">
+				AND WRITER like CONCAT('%', #{keyword}, '%')
+			</if>	
+		</trim>
+		ORDER BY SEQ DESC		
+		LIMIT #{startList}, #{listSize}
 	</select>
 	
+	<select id="getBoardListCnt" resultType="int">
+		SELECT count(*) FROM BOARD
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="searchType=='TITLE' and keyword != null and keyword != '' ">
+				AND TITLE like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='CONTENT' and keyword != null and keyword != '' ">
+				AND CONTENT like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='WRITER' and keyword != null and keyword != '' ">
+				AND WRITER like CONCAT('%', #{keyword}, '%')
+			</if>	
+		</trim>		
+	</select>	
 </mapper>
