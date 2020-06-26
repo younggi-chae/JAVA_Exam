@@ -2,6 +2,8 @@ package mvc.board;
 
 import java.util.List;
 
+import mvc.common.Search;
+
 public interface BoardService {
 
 	//글등록
@@ -17,8 +19,10 @@ public interface BoardService {
 	BoardDTO getBoard(BoardDTO dto);
 
 	//글 목록 조회
-	List<BoardDTO> getBoardList(BoardDTO dto);
+	List<BoardDTO> getBoardList(Search search);
+	
 	//글 조회수 
 	void updateCnt(BoardDTO dto);
-
+	
+	int getBoardListCnt(Search search);
 }
