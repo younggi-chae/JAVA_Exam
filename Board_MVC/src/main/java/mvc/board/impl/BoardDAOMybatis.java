@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mvc.board.BoardDTO;
+import mvc.common.Search;
 
 @Repository
 public class BoardDAOMybatis {
@@ -25,7 +26,7 @@ public class BoardDAOMybatis {
 	}
 	
 	public void deleteBoard(BoardDTO dto) {
-		System.out.println("===> Mybatis로 deleteBoard() 기능 처리");
+		System.out.println("===> Mybatis로 deleteBoard() 기능 처리"); 
 		mybatis.delete("BoardDAO.deleteBoard", dto);
 	}
 	
@@ -34,12 +35,16 @@ public class BoardDAOMybatis {
 		return (BoardDTO) mybatis.selectOne("BoardDAO.getBoard", dto);
 	}
 	
-	public List<BoardDTO> getBoardList(BoardDTO dto) {
+	public List<BoardDTO> getBoardList(Search search) {
 		System.out.println("===> Mybatis로 getBoardList() 기능 처리");
-		return mybatis.selectList("BoardDAO.getBoardList", dto);
+		return mybatis.selectList("BoardDAO.getBoardList", search);
 	}
 	
 	public void updateCnt(BoardDTO dto) {
 		mybatis.update("BoardDAO.updateCnt", dto);				
+	}
+	
+	public int getBoardListCnt(Search search) {
+		return mybatis.selectOne("BoardDAO.getBoardListCnt", search);
 	}
 }
