@@ -25,4 +25,13 @@ public interface BoardService {
 	void updateCnt(BoardDTO dto);
 	
 	int getBoardListCnt(Search search);
+	
+    List<ReplyDTO> getReplyList(int bid);
+	
+	int saveReply(ReplyDTO replyDTO);	
+
+	int updateReply(ReplyDTO replyDTO);	
+
+	int deleteReply(int rid);
+	
 }
