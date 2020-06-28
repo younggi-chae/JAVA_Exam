@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import mvc.board.BoardDTO;
 import mvc.board.BoardService;
+import mvc.board.ReplyDTO;
 import mvc.common.Search;
 
 @Controller
@@ -56,10 +57,10 @@ public class BoardController {
 	// 글 상세 조회
 	@RequestMapping("/getBoard.do")
 	public String getBoard(BoardDTO dto, Model model) {
-
-		System.out.println("글 상세 조회 처리");
+		
 		boardService.updateCnt(dto);
-		model.addAttribute("board", boardService.getBoard(dto));
+		model.addAttribute("replyDTO", new ReplyDTO());
+		model.addAttribute("board", boardService.getBoard(dto));		
 		return "getBoard.jsp";		
 	}
 
@@ -73,7 +74,6 @@ public class BoardController {
 	        ,@ModelAttribute("search") Search search) {		
 		
 		//검색
-		model.addAttribute("search", search);
 		search.setSearchType(searchType);
 		search.setKeyword(keyword);
 		
