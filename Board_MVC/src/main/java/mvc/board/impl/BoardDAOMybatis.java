@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mvc.board.BoardDTO;
+import mvc.board.ReplyDTO;
 import mvc.common.Search;
 
 @Repository
@@ -46,5 +47,21 @@ public class BoardDAOMybatis {
 	
 	public int getBoardListCnt(Search search) {
 		return mybatis.selectOne("BoardDAO.getBoardListCnt", search);
+	}	
+	
+	public List<ReplyDTO> getReplyList(int bid) {
+		return mybatis.selectList("replyMapper.getReplyList", bid);
 	}
+
+	public int saveReply(ReplyDTO replyDTO) {
+		return mybatis.insert("replyMapper.saveReply", replyDTO);
+	}
+
+	public int updateReply(ReplyDTO replyDTO) {
+		return mybatis.update("replyMapper.updateReply", replyDTO);
+	}
+
+	public int deleteReply(int rid) {
+		return mybatis.delete("replyMapper.deleteReply", rid);
+	}		
 }
