@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import mvc.board.BoardDTO;
 import mvc.board.BoardService;
+import mvc.board.ReplyDTO;
 import mvc.common.Search;
 
 @Service("boardService")
@@ -44,6 +45,21 @@ public class BoardServiceImpl implements BoardService {
 	
 	public int getBoardListCnt(Search search) {
 		return boardDAO.getBoardListCnt(search);
-	}
+	}		
 	
+	public List<ReplyDTO> getReplyList(int bid) {
+		return boardDAO.getReplyList(bid);
+	}
+
+	public int saveReply(ReplyDTO replyDTO)  {
+		return boardDAO.saveReply(replyDTO);
+	}
+
+	public int updateReply(ReplyDTO replyDTO) {
+		return boardDAO.updateReply(replyDTO);
+	}
+
+	public int deleteReply(int rid) {
+		return boardDAO.deleteReply(rid);
+	}		
 }
