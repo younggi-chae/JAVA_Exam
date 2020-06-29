@@ -4,8 +4,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <c:url var="saveReplyURL" value="/restBoard/saveReply"></c:url>
-
-
+<c:url var="updateReplyURL" value="/restBoard/updateReply"></c:url>
+<c:url var="deleteReplyURL" value="/restBoard/deleteReply"></c:url>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,19 +24,16 @@
 	$(document).on('click', '#btnListForm', function(e){
 		e.preventDefault();
 		location.href = "getBoardList.do";
-	});		
-</script>
-
-<script>
-  
+	});
+	
+	
 	$(document).ready(function(){
 		showReplyList();
 	});
-  
+	
 	function showReplyList(){
-
-		var url = "${pageContext.request.contextPath}/restBoard/getReplyList";
-		var paramData = {"bid" : "${getBoard.bid}"};
+		var url = "${pageContext.request.contextPath}/restBoard/getReplyList.do";
+		var paramData = {"seq" : "${getBoard.seq}"};
 		$.ajax({
             type: 'POST',
             url: url,
@@ -67,23 +64,23 @@
 	                     htmls += '</div>';
 	                });	//each end
 			}
-			$("#replyList").html(htmls);           
-            }	   // Ajax success end
+			$("#replyList").html(htmls);        
+            }  // Ajax success end
 		});	// Ajax end
 	}
 	
-	//댓글 저장 버튼 클릭 이벤트
 	$(document).on('click', '#btnReplySave', function(){
 		var replyContent = $('#content').val();
 		var replyReg_id = $('#reg_id').val();
 		var paramData = JSON.stringify({"content": replyContent
 				, "reg_id": replyReg_id
-				, "bid":'${getBoard.bid}'
-		});
+				, "seq":'${getBoard.seq}'
+		});		
+
 		var headers = {"Content-Type" : "application/json"
 				, "X-HTTP-Method-Override" : "POST"};
 		$.ajax({
-			url:"${pageContext.request.contextPath}/restBoard/saveReply"
+			url: "${saveReplyURL}"
 			, headers : headers
 			, data : paramData
 			, type : 'POST'
@@ -128,7 +125,8 @@
 		var replyEditContent = $('#editContent').val();
 		var paramData = JSON.stringify({"content": replyEditContent
 				, "rid": rid
-		});
+		});		
+
 		var headers = {"Content-Type" : "application/json"
 				, "X-HTTP-Method-Override" : "POST"};
 		$.ajax({
@@ -138,7 +136,7 @@
 			, type : 'POST'
 			, dataType : 'text'
 			, success: function(result){
-                console.log(result);
+                                console.log(result);
 				showReplyList();
 			}
 			, error: function(error){
@@ -161,8 +159,8 @@
 				console.log("에러 : " + error);
 			}
 		});
+		location.reload();
 	}
-	
 </script>
 
 <title>글 상세</title>
@@ -210,7 +208,7 @@
 	<!-- Reply Form {s} -->
 			<div class="my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px">
 				<form:form name="form" id="form" role="form" modelAttribute="replyDTO" method="post">
-				<form:hidden path="bid" id="bid"/>
+				<form:hidden path="seq" id="seq" value=""/>
 				<div class="row">
 					<div class="col-sm-10">
 						<form:textarea path="content" id="content" class="form-control" rows="3" placeholder="댓글을 입력해 주세요"></form:textarea>
@@ -222,14 +220,14 @@
 				</div>
 				</form:form>
 			</div>
-			<!-- Reply Form {e} -->
-			
+			<!-- Reply Form {e} -->			
+
 			<!-- Reply List {s}-->
 			<div class="my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px">
 				<h6 class="border-bottom pb-2 mb-0">Reply list</h6>
 				<div id="replyList"></div>
 			</div> 
-			<!-- Reply List {e}-->	
+			<!-- Reply List {e}-->		
 </center>
 </body>
 </html>
