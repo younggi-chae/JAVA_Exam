@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BoardDAO">
+		
+	<resultMap type="board" id="boardResult">
+		<id property="seq" column="SEQ" />
+		<result property="title" column="TITLE" />
+		<result property="writer" column="WRITER" />
+		<result property="content" column="CONTENT"/>
+		<result property="regDate" column="REGDATE"/>
+		<result property="cnt" column="CNT"/>			
+	</resultMap>	
+			
+	<insert id="insertBoard">
+		<![CDATA[
+		INSERT INTO BOARD(SEQ, TITLE, WRITER, CONTENT) 
+		VALUE((SELECT IFNULL(MAX(SEQ),0)+1 FROM BOARD AS A),#{title},#{writer},#{content});
+		]]>
+	</insert>
+
+	<update id="updateBoard" >
+		<![CDATA[
+		UPDATE BOARD SET TITLE=#{title}, CONTENT=#{content} WHERE SEQ=#{seq}
+		]]>
+	</update>
+
+	<delete id="deleteBoard">
+		<![CDATA[
+		DELETE FROM BOARD WHERE SEQ=#{seq}
+		]]>
+	</delete>
+	
+	<select id="getBoard" resultType="board">
+		<![CDATA[
+		SELECT * FROM BOARD WHERE SEQ=#{seq}
+		]]>
+	</select>
+	
+	<update id="updateCnt" parameterType="int">
+		<![CDATA[
+		UPDATE BOARD SET CNT= CNT+1 WHERE SEQ=#{seq}
+		]]>
+	</update>
+
+	<select id="getBoardList" resultType="board">
+		SELECT * FROM BOARD
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="searchType=='TITLE' and keyword != null and keyword != '' ">
+				AND TITLE like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='CONTENT' and keyword != null and keyword != '' ">
+				AND CONTENT like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='WRITER' and keyword != null and keyword != '' ">
+				AND WRITER like CONCAT('%', #{keyword}, '%')
+			</if>	
+		</trim>
+		ORDER BY SEQ DESC		
+		LIMIT #{startList}, #{listSize}
+	</select>
+	
+	<select id="getBoardListCnt" resultType="int">
+		SELECT count(*) FROM BOARD
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="searchType=='TITLE' and keyword != null and keyword != '' ">
+				AND TITLE like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='CONTENT' and keyword != null and keyword != '' ">
+				AND CONTENT like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='WRITER' and keyword != null and keyword != '' ">
+				AND WRITER like CONCAT('%', #{keyword}, '%')
+			</if>	
+		</trim>		
+	</select>	
+</mapper>
