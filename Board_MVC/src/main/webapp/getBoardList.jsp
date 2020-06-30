@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ include file="header.jsp"%>
+<c:url var="getBoardListURL" value="getBoardList.do"></c:url>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -20,7 +21,7 @@
 	var page = ((range - 2) * rangeSize) + 1;
 	var range = range - 1;
 
-	var url = "getBoardList.do";
+	var url = "${getBoardList}";
 	url = url + "?page=" + page;
 	url = url + "&range=" + range;
 	url = url + "&searchType=" + $('#searchType').val();
@@ -30,7 +31,7 @@
 
 	//페이지 번호 클릭
 	function fn_pagination(page, range, rangeSize, searchType, keyword) {
-	var url = "getBoardList.do";
+	var url = "${getBoardList}";
 	url = url + "?page=" + page;
 	url = url + "&range=" + range;
 	url = url + "&searchType=" + $('#searchType').val();
@@ -43,7 +44,7 @@
 	var page = parseInt((range * rangeSize)) + 1;
 	var range = parseInt(range) + 1;
 
-	var url = "getBoardList.do";
+	var url = "${getBoardList}";
 	url = url + "?page=" + page;
 	url = url + "&range=" + range;
 	url = url + "&searchType=" + $('#searchType').val();
@@ -53,7 +54,7 @@
 	
 	$(document).on('click', '#btnSearch', function(e){
 	e.preventDefault();
-	var url = "getBoardList.do";
+	var url = "${getBoardList}";
 	url = url + "?searchType=" + $('#searchType').val();
 	url = url + "&keyword=" + $('#keyword').val();
 	location.href = encodeURI(url);	
@@ -72,7 +73,7 @@
 				<h3>
 					${userName}
 					<spring:message code="message.board.list.welcomeMsg" />
-					<a href="logout.do">Log-out</a>
+					<a href="logout">Log-out</a>
 				</h3>
 				<br>
 				<div>
