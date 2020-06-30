@@ -1,5 +1,5 @@
-<!-- jQuery -->
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+ <!-- jQuery -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 
 <!-- Bootstrap CSS -->
@@ -7,7 +7,4 @@
 
 
 <!-- common CSS -->
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
-
-
