@@ -33,6 +33,7 @@ public class Mission02 {
 				System.out.println("당신의 총점은 " + sum + "입니다." + grade + "등급으로 과락입니다.");
 			else
 				System.out.println("당신의 총점은 " + sum + "입니다. 등급은 " + grade + "입니다.");
+			
 		}
 	}
 }
