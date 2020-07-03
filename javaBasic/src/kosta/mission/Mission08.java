@@ -17,27 +17,33 @@ public class Mission08 {
 		//해당 인덱스의 배열 내용이 출력
 		//switch문 사용
 		
-		String[] menu = new String[3];
+			String[] menu = new String[3];
+		
 		int num;
+		
 		Scanner sc = new Scanner(System.in);
 		
+		System.out.println("====메뉴 선택====");
+		System.out.println("1.추가  2.출력  3.검색  4.종료");
+		num = sc.nextInt();		
 		
-		num = sc.nextInt();
-		
-		switch (num) {
+		switch (num) {		
 		case 1:
-			menu[0] = "햄버거";
-			break;
+			System.out.println("1.배열에 추가하기");
+		    for(int i = 0; i < menu.length; i++) {
+		    	menu[i] = sc.nextLine();
+		    }		    
 		case 2:
-			menu[1] = "치킨";
+			System.out.println("2.출력");
+			for(int i = 0; i <menu.length; i++) {
+				System.out.print(menu[i]+ ",");
+			}			
 		case 3:
-			menu[2] = "피자";
+			System.out.println("검색");
+			System.out.println(menu[2]);
+		case 4:
 			break;
-		}
-		
-		for(int i = 0; i < menu.length; i++) {
-			System.out.print(menu[i] + ",");
-		}
+		}	
 		
 	}
 
