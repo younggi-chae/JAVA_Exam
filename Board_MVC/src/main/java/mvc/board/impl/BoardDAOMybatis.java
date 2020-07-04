@@ -17,27 +17,27 @@ public class BoardDAOMybatis {
 	private SqlSessionTemplate mybatis;
 	
 	public void insertBoard(BoardDTO dto) {
-		System.out.println("===> Mybatis·Î insertBoard() ±â´É Ã³¸®");
+		System.out.println("===> Mybatisë¡œ insertBoard() ê¸°ëŠ¥ ì²˜ë¦¬");
 		mybatis.insert("BoardDAO.insertBoard", dto);
 	}
 	
 	public void updateBoard(BoardDTO dto) {
-		System.out.println("===> Mybatis·Î updateBoard() ±â´É Ã³¸®");
+		System.out.println("===> Mybatisë¡œ updateBoard() ê¸°ëŠ¥ ì²˜ë¦¬");
 		mybatis.update("BoardDAO.updateBoard", dto);
 	}
 	
 	public void deleteBoard(BoardDTO dto) {
-		System.out.println("===> Mybatis·Î deleteBoard() ±â´É Ã³¸®"); 
+		System.out.println("===> Mybatisë¡œ deleteBoard() ê¸°ëŠ¥ ì²˜ë¦¬"); 
 		mybatis.delete("BoardDAO.deleteBoard", dto);
 	}
 	
 	public BoardDTO getBoard(BoardDTO dto) {
-		System.out.println("===> Mybatis·Î getBoard() ±â´É Ã³¸®");
+		System.out.println("===> Mybatisë¡œ getBoard() ê¸°ëŠ¥ ì²˜ë¦¬");
 		return (BoardDTO) mybatis.selectOne("BoardDAO.getBoard", dto);
 	}
 	
 	public List<BoardDTO> getBoardList(Search search) {
-		System.out.println("===> Mybatis·Î getBoardList() ±â´É Ã³¸®");
+		System.out.println("===> Mybatisë¡œ getBoardList() ê¸°ëŠ¥ ì²˜ë¦¬");
 		return mybatis.selectList("BoardDAO.getBoardList", search);
 	}
 	
@@ -47,21 +47,5 @@ public class BoardDAOMybatis {
 	
 	public int getBoardListCnt(Search search) {
 		return mybatis.selectOne("BoardDAO.getBoardListCnt", search);
-	}	
-	
-	public List<ReplyDTO> getReplyList(int bid) {
-		return mybatis.selectList("replyMapper.getReplyList", bid);
-	}
-
-	public int saveReply(ReplyDTO replyDTO) {
-		return mybatis.insert("replyMapper.saveReply", replyDTO);
-	}
-
-	public int updateReply(ReplyDTO replyDTO) {
-		return mybatis.update("replyMapper.updateReply", replyDTO);
-	}
-
-	public int deleteReply(int rid) {
-		return mybatis.delete("replyMapper.deleteReply", rid);
 	}		
 }
