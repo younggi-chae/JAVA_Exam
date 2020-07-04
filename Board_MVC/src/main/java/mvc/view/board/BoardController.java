@@ -25,7 +25,7 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	 
-	// ±Ûµî·Ï
+	// ê¸€ë“±ë¡
 	@RequestMapping("/insertBoard.do")
 	public String insertBoard(BoardDTO dto) throws IOException {
 		
@@ -38,33 +38,32 @@ public class BoardController {
 		return "getBoardList.do";
 	}
  
-	// ±Û¼öÁ¤
+	// ê¸€ìˆ˜ì •
 	@RequestMapping("/updateBoard.do")
 	public String updateBoard(@ModelAttribute("board") BoardDTO dto) {
 		boardService.updateBoard(dto);
 		return "getBoardList.do";
 	}
 
-	// ±Û»èÁ¦
+	// ê¸€ì‚­ì œ
 	@RequestMapping("/deleteBoard.do")
 	public String deleteBoard(BoardDTO dto) {
 
-		System.out.println("±Û »èÁ¦ Ã³¸®");
+		System.out.println("ê¸€ ì‚­ì œ ì²˜ë¦¬");
 		boardService.deleteBoard(dto);
 		return "getBoardList.do";
 	}
 
-	// ±Û »ó¼¼ Á¶È¸
+	// ê¸€ ìƒì„¸ ì¡°íšŒ
 	@RequestMapping("/getBoard.do")
 	public String getBoard(BoardDTO dto, Model model) {
 		
-		boardService.updateCnt(dto);
-		model.addAttribute("replyDTO", new ReplyDTO());
+		boardService.updateCnt(dto);		
 		model.addAttribute("board", boardService.getBoard(dto));		
 		return "getBoard.jsp";		
 	}
 
-	// ±Û ¸ñ·Ï °Ë»ö
+	// ê¸€ ëª©ë¡ ê²€ìƒ‰
 	@RequestMapping("/getBoardList.do")
 	public String getBoardList(Model model
 			,@RequestParam(required=false, defaultValue="1") int page
@@ -73,17 +72,17 @@ public class BoardController {
 	        ,@RequestParam(required=false) String keyword
 	        ,@ModelAttribute("search") Search search) {		
 		
-		//°Ë»ö
+		//ê²€ìƒ‰
 		search.setSearchType(searchType);
 		search.setKeyword(keyword);
 		
-		//ÀüÃ¼ °Ô½Ã±Û ¼ö
+		//ì „ì²´ ê²Œì‹œê¸€ ìˆ˜
 		int listCnt = boardService.getBoardListCnt(search);
-		//°Ë»ö
+		//ê²€ìƒ‰
 		search.pageInfo(page, range, listCnt);	
 		
-		//¸ğµ¨ Á¤º¸ ÀúÀå			
-		model.addAttribute("pagination", search); //ÆäÀÌÂ¡
+		//ëª¨ë¸ ì •ë³´ ì €ì¥			
+		model.addAttribute("pagination", search); //í˜ì´ì§•
 		model.addAttribute("boardList", boardService.getBoardList(search));
 		return "getBoardList.jsp";
 	}
