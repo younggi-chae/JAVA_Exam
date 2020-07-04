@@ -6,32 +6,24 @@ import mvc.common.Search;
 
 public interface BoardService {
 
-	//±Ûµî·Ï
+	//ê¸€ë“±ë¡
 	void insertBoard(BoardDTO dto); 
 
-	//±Û¼öÁ¤   
+	//ê¸€ìˆ˜ì •   
 	void updateBoard(BoardDTO dto);
 	
-	//±Û»èÁ¦
+	//ê¸€ì‚­ì œ
 	void deleteBoard(BoardDTO dto);
 
-	//±Û»ó¼¼ Á¶È¸
+	//ê¸€ìƒì„¸ ì¡°íšŒ
 	BoardDTO getBoard(BoardDTO dto);
 
-	//±Û ¸ñ·Ï Á¶È¸
+	//ê¸€ ëª©ë¡ ì¡°íšŒ
 	List<BoardDTO> getBoardList(Search search);
 	
-	//±Û Á¶È¸¼ö 
+	//ê¸€ ì¡°íšŒìˆ˜ 
 	void updateCnt(BoardDTO dto);
 	
-	int getBoardListCnt(Search search);
-	
-    List<ReplyDTO> getReplyList(int bid);
-	
-	int saveReply(ReplyDTO replyDTO);	
-
-	int updateReply(ReplyDTO replyDTO);	
-
-	int deleteReply(int rid);
+	int getBoardListCnt(Search search);   
 	
 }
