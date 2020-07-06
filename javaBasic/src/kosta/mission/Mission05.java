@@ -1,6 +1,7 @@
 package kosta.mission;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Mission05 {
@@ -25,6 +26,33 @@ public class Mission05 {
 			}
 			arr[i][4] = arr[i][3] / 3; // 평균
 		}
+		
+		// 정렬(평균을 기준으로 오름/ 내림)
+		for(int i =0; i < arr.length; i++) {
+			for(int j = i+1; j < arr.length; j++) {
+				if(arr[i][4] < arr[j][4]) {
+					int temp[];
+					temp = arr[i];
+					arr[i] = arr[j];
+					arr[j] = temp;
+				}
+			}
+		}		
+		
+//		Arrays.sort(arr, new Comparator<int[]>() {
+//
+//			@Override
+//			public int compare(int[] o1, int[] o2) {
+//				if(o1[4] < o2[4]) {
+//					return 1;
+//				} else if(o1[4] > o2[4]) {
+//					return -1;
+//				} else {
+//					return 0;
+//				}				
+//			}
+//		});
+		
 		// 출력
 		for (String s : subjects) {
 			System.out.print(s + "\t");
@@ -38,6 +66,8 @@ public class Mission05 {
 			System.out.println();
 		}
 	}
+	
+		
 
 //		String oldArr[] = new String[3];
 //			oldArr[0] = "10";
