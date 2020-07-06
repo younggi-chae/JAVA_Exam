@@ -12,11 +12,19 @@ public class Mission06 {
 		//2. while(true) break;
 		
 		Scanner sc = new Scanner(System.in);
-		
-		
-		
-		
-		
+		System.out.println("숫자를 입력해주세요.");
+		do {
+			int a = sc.nextInt();
+			int b = sc.nextInt();
+			
+			int result = b - a;
+			if(b < a) {
+				break;
+			}
+			System.out.println("b - a = " + result);
+			
+		} while (true);
 	}
+    }
 
-}
+
