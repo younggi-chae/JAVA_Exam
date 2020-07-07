@@ -9,12 +9,13 @@ public class BookMain {
 					   new Book("Oracle", 15000)
 		};
 		
-		book[0].discount();
-		book[1].discount();
-		book[2].discount();
+		for(int i = 0; i < book.length; i++) {
+		book[i].discount();
+		}
 		
 		for(int i = 0; i < book.length; i++) {
 			book[i].print();
 		}
 	}
 }
+
