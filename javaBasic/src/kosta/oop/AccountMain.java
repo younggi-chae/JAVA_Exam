@@ -21,6 +21,12 @@ public class AccountMain {
 		};
 		
 		for(int i = 0; i < arr.length; i++) {
+			try {
+				arr[i].withdraw(20000);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			}
 			arr[i].print();
 		}
 	}
