@@ -1,4 +1,4 @@
-package kosta.basic;
+package kosta.algorithm;
 
 public class SelectSort {
 
