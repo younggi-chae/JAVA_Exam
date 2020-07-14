@@ -12,7 +12,7 @@ public class SpecialMember extends GeneralMember {
 	}
 	
 	public void print() {
-		super.printMember();
+		super.print();
 		System.out.println("회원의 보너스 포인트  : " + bonusPoint);
 	}
 	

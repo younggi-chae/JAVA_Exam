@@ -16,7 +16,7 @@ public class GeneralMember {
 		this.address = address;
 	}
 	
-	public void printMember() {
+	public void print() {
 		System.out.println("회원의 아이디 : " + id);
 		System.out.println("회원의 이름 : " + mName);
 		System.out.println("회원의 주소 : " + address);
