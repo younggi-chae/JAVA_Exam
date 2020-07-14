@@ -7,6 +7,7 @@ public class AccountMain {
 		Account a = new Account("1", "홍길동", 10000);
 		CheckCard c= new CheckCard("2", "김길동", 5000, "A");
 		a.deposit(3000);
+		c.deposit(5000);
 		
 		try {
 			c.withdraw(3000);
@@ -15,5 +16,6 @@ public class AccountMain {
 			e.printStackTrace();
 		}
 		c.print();
+		
 	}
 }
