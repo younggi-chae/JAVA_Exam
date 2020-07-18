@@ -16,6 +16,6 @@ public class CheckCard extends Account{
 			throw new Exception("지불이 불가능 합니다.");
 			
 		}
-		return amount;
+		return balance -= amount;
 	}
 }
