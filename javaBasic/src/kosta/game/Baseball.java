@@ -1,4 +1,4 @@
-package game;
+package kosta.game;
 
 public class BaseBall {
 	private int hidden[];

@@ -6,7 +6,7 @@ public class Main {
 
 	public static void showProduct(Product[] arr) {
 		for (int i = 0; i < arr.length; i++) {
-			System.out.println(i + "번째 상품");
+			System.out.println(i+1 + "번째 상품");
 			arr[i].show();
 			System.out.println();
 		}
@@ -28,12 +28,13 @@ public class Main {
 				showProduct(arr);
 				System.out.print("입력: ");
 				int idx = Integer.parseInt(sc.nextLine());
-				cart.addCart(arr[idx]);
+				cart.addCart(arr[idx - 1]);
 				break;
 			case "2":
 				cart.orderList();
 				break;
-
+			case "3":
+				return;
 			}
 		}
 

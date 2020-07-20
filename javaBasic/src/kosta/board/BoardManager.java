@@ -26,8 +26,14 @@ public class BoardManager {
 		String content = sc.nextLine();
 		System.out.println("작성일 : ");
 		String date = sc.nextLine();
+		System.out.println("파일번호 : ");
+		String fileNo = sc.nextLine();
+		System.out.println("파일이름 : ");
+		String fileName = sc.nextLine();
+		System.out.println("파일사이즈 : ");
+		String fileSize = sc.nextLine();
 		seq++;
-		arr[count++] = new Board(seq, title, writer, content, date);
+		arr[count++] = new Board(seq, title, writer, content, date, fileNo, fileName, fileSize);
 	}
 
 	public void getBoardList() {

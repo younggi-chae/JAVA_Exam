@@ -1,59 +1,26 @@
-package game;
+package kosta.game;
 
-public class BaseBall {
-	private int hidden[];
-	Referee referee;
+public class Referee {
+	private int strike;
+	private int ball;
 	
-	public BaseBall(){
-		init();
-	}
-	
-	public void init() {
-		hidden = new int[3];
-		referee = new Referee();
-		
-		hidden[0] = (int)(Math.random()*9)+1;
-		do{
-			hidden[1] = (int)(Math.random()*9)+1;
-		}while(hidden[0] == hidden[1]);
-		
-		do{
-			hidden[2] = (int)(Math.random()*9)+1;
-		}while(hidden[0] == hidden[2] || hidden[1] == hidden[2]);
-		
-		for(int n : hidden){
-			System.out.print(n + " ");
-		}
-	}
-	
-	public Referee judge(int[] input) {
-		referee.setStrike(countStrike(input));
-		referee.setBall(countBall(input));
-		
-		return referee;
-	}
-	
-	public int countStrike(int[] input) {
-		int strike = 0;
-		for(int i=0;i<3;i++){
-			if(hidden[i] == input[i]){
-					strike++;
-			}
-		}		
-		
+	public Referee() {}
+
+	public int getStrike() {
 		return strike;
 	}
-	
-	public int countBall(int input[]){
-		int ball = 0;
-		for(int i=0;i<3;i++){
-			if(hidden[i] == input[(i+1)%3]){
-				ball++;
-			}else if(hidden[i] == input[(i+2)%3]){
-				ball++;
-			}
-		}
-		
+
+	public void setStrike(int strike) {
+		this.strike = strike;
+	}
+
+	public int getBall() {
 		return ball;
-	}	
+	}
+
+	public void setBall(int ball) {
+		this.ball = ball;
+	};
+	
+	
 }

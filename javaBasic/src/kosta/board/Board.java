@@ -17,16 +17,18 @@ public class Board {
 	String content;
 	String date;
 	int cnt;
+	FileInfo fileInfo;
 	
 	public Board() {}
 	
-	public Board(int seq, String title, String writer, String content, String date) {
+	public Board(int seq, String title, String writer, String content, String date, String FileNo, String FileName, String FileSize) {
 		super();		
 		this.seq = seq;
 		this.title = title;
 		this.writer = writer;
 		this.content = content;
-		this.date = date;	
+		this.date = date;
+		this.fileInfo = new FileInfo(FileNo, FileName, FileSize);
 	}
 
 	public void show() {
@@ -35,7 +37,7 @@ public class Board {
 		System.out.println("작성자 : " + writer);
 		System.out.println("글내용 : " + content);
 		System.out.println("작성일 : " + date);
-		System.out.println("조회수 : " + cnt);
+		System.out.println("조회수 : " + cnt);		
 	}
 
 	public int getSeq() {

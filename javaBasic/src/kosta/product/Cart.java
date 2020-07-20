@@ -11,6 +11,7 @@ public class Cart {
 	}
 	
 	public void addCart(Product p){
+		
 		pArr[count++] = p;
 	}
 	

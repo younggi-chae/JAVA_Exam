@@ -6,18 +6,22 @@ public class BubbleSort {
 
 		int arr[] = { 3, 6, 2, 8, 4, 1 };
 		printArray(arr);
-		bublleSort(arr, arr.length - 1);
+		bubbleSort(arr, arr.length - 1);
 		printArray(arr);
 	}
 
-	public static void bublleSort(int arr[], int last) {
+	public static void bubbleSort(int arr[], int last) {
 		if (last > 0) {
-			for (int i = 1; i <= last; i++) {
-				if (arr[i - 1] > arr[i]) {
-					swap(arr, i - 1, i);
+			for (int i = 0; i < last; i++) {
+				if (arr[i] > arr[i+1]) {
+					swap(arr, i, i+1);
 				}
 			}
-			bublleSort(arr, last - 1);
+<<<<<<< Updated upstream
+=======
+			
+>>>>>>> Stashed changes
+			bubbleSort(arr, last - 1);
 		}
 	}
 	public static void swap(int arr[], int index1, int index2) {

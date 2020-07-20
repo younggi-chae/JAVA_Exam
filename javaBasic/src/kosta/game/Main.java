@@ -1,4 +1,4 @@
-package game;
+package kosta.game;
 
 import java.util.Scanner;
 
