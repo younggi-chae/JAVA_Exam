@@ -10,7 +10,7 @@ public class Main {
 		Manager m = new Manager();
 							
 		while (true) {
-			System.out.println("1.추가  2.출력  3.검색  4.종료");
+			System.out.println("1.추가  2.출력  3.검색  4.수정  5.삭제   6.종료");
 			System.out.println("선택 : ");
 			String menu = sc.nextLine();
 
@@ -25,6 +25,12 @@ public class Main {
 				m.searchPhoneInfo();
 				break;
 			case "4":
+				m.updatePhoneInfo();
+				break;
+			case "5":
+				m.deletePhoneInfo();
+				break;
+			case "6":			
 				System.out.println("프로그램 종료");
 				return;
 			} //end switch

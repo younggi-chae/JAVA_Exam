@@ -83,12 +83,11 @@ public class Manager {
 			}
 			break;
 		}
-
 	}
 
 	public void searchPhoneInfo() {
 		// 이름의 전화번호 내역을 검색되도록 한다.
-		System.out.println("이름 : ");
+		System.out.println("검색할 이름을 입력해주세요. : ");
 		String name = sc.nextLine();
 		int idx = -1;
 
@@ -102,6 +101,54 @@ public class Manager {
 		if (idx == -1) {
 			System.out.println("찾을 수 없습니다.");
 		}
-
 	}
-}
+	
+	public void updatePhoneInfo() {
+		System.out.print("검색할 이름을 입력해주세요. : ");
+		String name = sc.nextLine();
+		int idx = -1; 
+
+		for (int i = 0; i < count; i++) {
+			PhoneInfo info = arr[i];
+			if (name.equals(info.getName())) {
+				System.out.print("수정 전화번호 입력 : ");
+				String phoneNo = sc.nextLine();
+				info.setPhoneNo(phoneNo);
+				idx = i;
+				break;
+			}
+		}
+		if (idx == -1) {
+			System.out.println("찾을 수 없습니다.");
+		}
+	} 
+
+	public void deletePhoneInfo() {
+		System.out.print("검색할 이름을 입력해주세요. : ");
+		String name = sc.nextLine();
+		int idx = -1;
+
+		for (int i = 0; i < count; i++) {
+			PhoneInfo info = arr[i];
+			if (name.equals(info.getName())) {
+				idx = i;
+				break;
+			}
+		}
+
+		if (idx != -1) {
+			for (int i = idx; i < count - 1; i++) {
+				arr[i] = arr[i + 1];
+			}
+
+			arr[count - 1] = null;
+			count--;
+		} else {
+			System.out.println("찾을 수 없습니다.");
+		}
+	}
+	
+} // end class
+	
+	
+
