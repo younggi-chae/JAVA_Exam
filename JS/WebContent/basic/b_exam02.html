@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/*JavaScript 자료형*/
+	
+	//숫자형(number)
+	var intNum = 10;
+	var floatNum = 3.14;
+	
+	console.log(typeof intNum);
+	console.log(typeof floatNum);
+	
+	//문자형(string)
+	var sinS = 'single';
+	var doubleS = "double";
+	
+	console.log(typeof sinS);
+	console.log(typeof doubleS);
+	
+	//논리형(boolean)
+	var boolVar = true;
+	
+	console.log(typeof boolVar);
+	
+	//undefined, Null => object
+	var emptyVar;
+	var nullVar = null;
+	
+	console.log(typeof emptyVar);
+	console.log(typeof nullVar);
+	
+	//함수(function)
+	var func = function(){}
+	console.log(typeof func);
+	
+	//형변환
+	intNum = "안녕";
+	console.log(typeof intNum);
+	
+	//"123" => 123
+	// eval(), Number(), parseInt() : 문자열 => 숫자형
+	//parseInt는 문자열이 섞여있어도 자기가 변환할 수 있는 연산만큼 계산해 준다.
+	var num = "12바보";
+	num = parseInt(num);
+	var num2 = num + 10;
+	console.log(num2);	
+	
+	var num3 = "15";
+	
+	/*if(num3 === 15){   // ==는 형변환까지 해준다. 따라서 "같다"로 나온다.
+		alert("같다.")  // ===는 데이터 타입까지도 검사한다. 따라서 "다르다"로 나온다.
+	} else {
+		alert("다르다.")
+	}*/
+	
+	var myVar = "전역변수";
+	
+	function myFun(){
+		var myVar = "지역변수";
+		document.write("지역변수 : " + myVar + "<br>");
+		document.write("전역변수 : " + this.myVar + "<br>"); // this는 윈도우 객체(전역변수) => window.myVar
+	}
+	
+	myFun();
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
