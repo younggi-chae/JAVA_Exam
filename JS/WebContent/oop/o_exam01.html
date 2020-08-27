@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	//사용자 정의 객체
+	
+	//1.object 객체 
+	var obj = new Object();
+	obj.name = "홍길동";
+	obj.age = 20;
+	
+	console.log("이름 : " + obj.name);
+	console.log("나이 : " + obj.age);
+	
+	//2.리터럴 형식 객체
+	var a = {};
+	var obj2 = {
+		name : "박길동",
+		age : 20,
+		display : function () {
+			console.log("name : " + this.name); //객체 안에 this는 obj2이다.
+		}
+	};
+	
+	obj2.display();
+	
+	//함수도 객체이다.
+	function add(x, y){
+		return x + y;
+	}
+	
+	add.result = add(100, 200);
+	add.status = "ok";
+	
+	console.log(add.result);
+	console.log(add.status);
+	
+	
+	//퀴즈 > 리터럴 형식으로 객체를 임의로 생성 후 
+	//     동적 프로퍼티와 메서드를 등록 후 사용하는 예제를 구현
+	
+	var i = {};
+	i.name = "김길동";
+	i.age = 25;
+	i.tel = "010-1111-2222";
+	i.display = function(){
+		console.log("name :" + this.name);
+	}
+	i.display();
+	
+	
+	//리터럴 형식으로 객체를 구현하시오
+	//Person 객체 (name:프로퍼티, eat(food){} :함수)
+	//결과 > 홍길동이 밥을 먹었습니다.
+	
+	var person = {
+		name : "홍길동",		
+		eat : function eat(food){		
+			console.log(this.name+ "이 " + food 
+					+ "을 먹었습니다.")
+		}
+	}
+	
+	person.eat("밥");
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
