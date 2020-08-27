@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	//console.log("add:" + add(10,20));
+	//console.log("add2:" + add2(10,20)); //에러, 자바스크립트는 탑다운 방식으로 읽기 때문에
+	  									  //선언적 함수는 선언 시 메모리에 미리 올라간다.
+	//선언적 함수
+	function add(a, b) {
+		var sum = a + b;
+		return sum;
+	}
+	
+	//익명 함수 - 변수에 담아서 사용
+	var add2 = function (a, b) {
+		//var sum = a + b;
+		sum = 0;
+		//alert(typeof (arguments) + " : " + arguments.length); //가변인자, 파라미터 이외의  값을 가져올 수 있다.
+		for(var i = 0; i < arguments.length; i++){
+			sum += arguments[i];
+		}
+		return sum;
+	}
+	
+	console.log(typeof add); //데이터타입 function
+	
+	//변수에 함수를 전달할 수 있다.
+	var plus = add2;     //add2(); 함수의 결과값을 전달.
+	console.log("plus: " + plus(1,2,3,4,5));
+	
+	//함수의 인자에 함수를 전달할 수 있다.
+	var foo = function(func) {
+		if(typeof func == 'function'){
+			func();
+		}		
+	}
+	
+//	foo(function(){ //콜백함수.
+//		console.log('파라미터에 함수를 호출하는 예제');
+//	})
+
+//	foo(100);	
+
+	//함수 안에서 함수를 리턴하여 리턴함수를 호출하는 예제 구현
+	var foo2 = function () { 
+		return function () { //내부함수
+			console.log("함수를 리턴하는 예제");
+		}		
+	}	
+	foo2()();
+	//var baz = foo2();
+	//baz();
+	
+	(function (){ //즉시 실행 함수
+		console.log("즉시 실행됨");
+	})();
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
