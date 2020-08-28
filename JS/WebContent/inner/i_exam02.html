@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	var arr = [];
+	
+	//이미지 경로 7개를 배열에 추가
+	for(var i = 0; i < 7; i++){
+		arr[i] = "../images/pic" + (i+1) + ".jpg";
+	}	
+	
+	window.onload = function(){
+		var img = document.getElementById("img");
+		//0~6 난수
+		var n = Math.floor(Math.random() * 7);
+		img.src = arr[n];
+	} //pic1~7
+
+</script>
+</head>
+<body>
+	<img id="img" src="">
+</body>
+</html>
