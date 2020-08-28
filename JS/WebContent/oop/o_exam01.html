@@ -62,9 +62,46 @@
 			console.log(this.name+ "이 " + food 
 					+ "을 먹었습니다.")
 		}
+	}	
+	person.eat("밥");
+	
+	
+	var student  = {   //한개의 객체를 생성할 경우는 리터럴 생성 방식을 사용한다.
+		name : "조길동",
+		kor : 90,
+		eng : 80,
+		mat : 70
+	};
+		
+	/* var output = "";
+	output += "이름 : " + student.name + " 총점 : " + (student.kor + student.eng + student.mat);
+	console.log(output); */
+	
+	/* var output = "";
+	with(student){  //with를 통해 중복된 student를 묶어준다.
+		output += "이름 : " + name + " 총점 : " + (kor + eng + mat);
+		console.log(output);
+	} */
+	
+	student.toString = function(){
+		var output = "";
+		for(var key in this){ //this는 객체를 가리킨다.
+			if(key != 'toString'){
+				output += key + '\t' + this[key] + '\n';
+			}
+		}
+		
+		return output;
 	}
 	
-	person.eat("밥");
+	console.log(student.toString());
+	
+	//속성 제거
+	delete (student.mat);
+	console.log(student.toString());
+	
+	
+	
 	
 </script>
 </head>
