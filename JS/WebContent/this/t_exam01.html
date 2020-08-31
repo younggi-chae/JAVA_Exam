@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	var data = 10; //전역변수
+	
+	function outer(){
+		this.data = 20; //일반함수 안에 this는 윈도우 객체
+		data = 30;
+		
+		console.log("1.data " + data); //30
+		console.log("2.this.data " + this.data); //30
+		console.log("3.window.data " + window.data); //30
+	}
+	
+	outer();
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

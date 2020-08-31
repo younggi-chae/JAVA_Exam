@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	var data = "Global data";
+	var obj1 = {'data' : 'obj1 data'};
+	var obj2 = {'data' : 'obj2 data'};
+
+	function func(){
+		console.log(this.data);
+	}
+	
+	//func(); //일반함수  글로벌
+	func.apply(obj1);  // this를 obj1dmf 가리키도록 한다. apply 인자에 따라 this가 결정된다.
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

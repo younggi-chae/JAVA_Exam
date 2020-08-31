@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	var data = 10;  //윈도우
+	
+	function MyClass(){
+		this.data = 0; // 객체에서 this는 객체를 가리킨다.
+	}
+	
+	MyClass.prototype.method1 = function(){
+		this.data = 20;  //window x,  MyClass o 
+		data = 30;
+		
+		console.log("1.data " + data); // 30
+		console.log("2.this.data " + this.data); //20
+		console.log("3.window.data " + window.data); //30
+	}
+	
+	var m1 = new MyClass();
+	m1.method1();
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
