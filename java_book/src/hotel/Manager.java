@@ -113,7 +113,7 @@ public class Manager {
 	public void cancel(LinkedList<Customer> list) {
 		System.out.println("예약번호를 입력해 주세요.");
 		System.out.println("입력 : ");
-		int reNo = sc.nextInt();		
+		int reNo = sc.nextInt();	
 		if(reservationNo == reNo) {
 			list.poll();
 			System.out.println("예약번호 " + reservationNo + " 취소 완료" );
