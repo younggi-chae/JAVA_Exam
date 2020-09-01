@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	 var object = {
+			name : '홍길동',
+			region : '서울시'
+	};
+	
+	//객체 => 문자열 변환
+	//alert(JSON.stringify(object));
+	
+	var str = JSON.stringify(object);
+	
+	//JSON 문자열 => 객체화		
+	var result = JSON.parse(str);
+	alert(obj.name + ' : ' + obj.region);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
