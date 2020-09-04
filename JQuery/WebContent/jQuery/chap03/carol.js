@@ -25,7 +25,7 @@
  $('#switcher-large').on('click', function(){
  $('body').removeClass('narrow').addClass('large');
  $('.button').removeClass('selected');
- $(this).addClass('selected');
+ $(this).addClass('selected');   //this는 자바스크립트 객체 팩토리함수
  });
 
  $('#switcher-narrow').on('click', function(){
@@ -57,7 +57,7 @@
  $('#switcher .button').on('click', function(){
 
  $('.button').removeClass('selected');
- $(this).addClass('selected');
+ $(this).addClass('selected');  //this는 클릭한 버튼이 된다.
  });
  });*/
 
