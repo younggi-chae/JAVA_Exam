@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	//사용자 정의 객체
+	
+	//1.object 객체 
+	var obj = new Object();
+	obj.name = "홍길동";
+	obj.age = 20;
+	
+	console.log("이름 : " + obj.name);
+	console.log("나이 : " + obj.age);
+	
+	//2.리터럴 형식 객체
+	var a = {};
+	var obj2 = {
+		name : "박길동",
+		age : 20,
+		display : function () {
+			console.log("name : " + this.name); //객체 안에 this는 obj2이다.
+		}
+	};
+	
+	obj2.display();
+	
+	//함수도 객체이다.
+	function add(x, y){
+		return x + y;
+	}
+	
+	add.result = add(100, 200);
+	add.status = "ok";
+	
+	console.log(add.result);
+	console.log(add.status);
+	
+	
+	//퀴즈 > 리터럴 형식으로 객체를 임의로 생성 후 
+	//     동적 프로퍼티와 메서드를 등록 후 사용하는 예제를 구현
+	
+	var i = {};
+	i.name = "김길동";
+	i.age = 25;
+	i.tel = "010-1111-2222";
+	i.display = function(){
+		console.log("name :" + this.name);
+	}
+	i.display();
+	
+	
+	//리터럴 형식으로 객체를 구현하시오
+	//Person 객체 (name:프로퍼티, eat(food){} :함수)
+	//결과 > 홍길동이 밥을 먹었습니다.
+	
+	var person = {
+		name : "홍길동",		
+		eat : function eat(food){		
+			console.log(this.name+ "이 " + food 
+					+ "을 먹었습니다.")
+		}
+	}	
+	person.eat("밥");
+	
+	
+	var student  = {   //한개의 객체를 생성할 경우는 리터럴 생성 방식을 사용한다.
+		name : "조길동",
+		kor : 90,
+		eng : 80,
+		mat : 70
+	};
+		
+	/* var output = "";
+	output += "이름 : " + student.name + " 총점 : " + (student.kor + student.eng + student.mat);
+	console.log(output); */
+	
+	/* var output = "";
+	with(student){  //with를 통해 중복된 student를 묶어준다.
+		output += "이름 : " + name + " 총점 : " + (kor + eng + mat);
+		console.log(output);
+	} */
+	
+	student.toString = function(){
+		var output = "";
+		for(var key in this){ //this는 객체를 가리킨다.
+			if(key != 'toString'){
+				output += key + '\t' + this[key] + '\n';
+			}
+		}
+		
+		return output;
+	}
+	
+	console.log(student.toString());
+	
+	//속성 제거
+	delete (student.mat);
+	console.log(student.toString());
+	
+	
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

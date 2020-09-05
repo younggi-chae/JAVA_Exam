@@ -1,0 +1,29 @@
+<script>
+   //개선 :중복제거, 재사용성, 유지보수 용이, 코드량 감소
+   function Person(name){
+        this.name = name;
+        this.introduce = function(){
+            return 'My name is ' + this.name;
+        }
+    }
+    var p1 = new Person("younggi");
+    alert(p1.introduce());
+
+    var p2 = new Person("minho");
+    alert(p2.introduce())   
+   
+    // function person() {}
+    // var p1 = new person();
+    // p1.name = "younggi"
+    // p1.introduce = function(){
+        // return "My name is " + this.name;
+    // }
+    // document.write(p1.introduce()+"<br />")
+// 
+    // var p2 = new person();
+    // p2.name = "minho"
+    // p2.introduce = function(){
+        // return "My name is " + this.name;
+    // }
+    // document.write(p2.introduce()+"<br />")
+</script>

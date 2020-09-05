@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div{
+		border: 1px solid;
+	}
+	#aa{
+		width: 300px;
+		height: 300px;
+		background: yellow;
+	}
+	
+	#bb{
+		width: 150px;
+		height: 150px;
+		margin-left: 80px;
+		margin-top: 40px;
+		background: green;
+	}
+	
+</style>
+<script type="text/javascript" src="crossEvent.js"></script>
+<script type="text/javascript">
+	
+	function aProcess(){		
+		alert('aa');
+	}
+	
+	function bProcess(e){		
+		alert('bb');
+		
+		//이벤트 객체 구하기
+		var event = window.event || e;
+		cross.Event.stopBubble(event);
+	}
+	
+	window.onload = function(){
+		var aa = document.getElementById("aa");
+		var bb = document.getElementById("bb");
+		
+		//aa.addEventListener('click', aProcess, false);
+		//bb.addEventListener('click', bProcess, false);
+		
+		cross.Event.addListener(aa, "click", aProcess, false);
+		cross.Event.addListener(bb, "click", bProcess, false);
+	}
+
+</script>
+</head>
+<body>
+	<div id="aa">
+		aaaaaaaaaaa
+		<div id="bb">
+			bbbbbbbbb
+		</div>
+		aaaaaaaaaaa
+	</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<script>
+    function factory_movie(title){  //외부함수, private한 변수 : 변수의 값을 수정할 때는 set_title, 변수를 가져올 때는 get_title 사용
+        return { //return은 작동 후 종료, get_title과 set_title을 통해서만 접근가능, private한 속성
+            get_title : function (){  //내부함수
+                return title; //외부함수 매개변수 title 사용.
+            },
+            set_title : function(_title){
+                if(typeof _title === 'String'){
+                title = _title  //외부함수 = 내부함수(set_title)
+                } else{
+                    alert('제목은 문자열이어야 합니다.');
+                }
+            }
+        }
+    }
+    ghost = factory_movie('Ghost in the shell'); //똑같이 return되는 객체를 가지고 있다.
+    matrix = factory_movie('Matrix');            //객체가 가지고있는 메소드들이 접근하는 타이틀의 값은 다름.
+    
+    alert(ghost.get_title());
+    alert(matrix.get_title());
+    
+    ghost.set_title('공각기동대');
+    
+    alert(ghost.get_title());  //'공각기공대' 호출
+    alert(matrix.get_title()); //'Matrix'호출
+</script>
